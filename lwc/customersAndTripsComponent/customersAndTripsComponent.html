@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col">
+            <template if:true={customerTrips.data}>
+                <lightning-card title="Customer trips">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>
+                                    Customer
+                                </th>
+                                <th>
+                                    Trip
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={customerTrips.data} for:item="customerTrip">
+                                <tr key={customerTrip.Id} class="slds-hint-parent">
+                                    <td>{customerTrip.Customer__r.Name}</td>
+                                    <td>{customerTrip.Trip__r.Name}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </lightning-card>
+            </template>
+            <template if:true={customerTrips.error}>
+                {customerTrips.error}
+            </template>
+        </div>
+    </div>
+</template>
